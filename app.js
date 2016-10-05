@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 app.set('view engine', 'pug');
 app.get('/favicon.ico', function (req, res) {
-    res.send(200);
+    res.sendStatus(200);
 });
 app.get('/', function (req, res) {
     res.render('index', { title: 'Home', message: 'Hello!' });
