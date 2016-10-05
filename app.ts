@@ -1,4 +1,4 @@
-var express = require('express');
+import * as express from 'express';
 
 let app = express();
 
