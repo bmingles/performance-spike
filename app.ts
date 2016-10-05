@@ -3,8 +3,8 @@ import * as fs from 'fs';
 import * as https from 'https';
 
 let options = {
-	key: fs.readFileSync(`${__dirname}/dev.key`),
-	cert: fs.readFileSync(`${__dirname}/dev.crt`),
+	key: fs.readFileSync(`${__dirname}/certs/dev.key`),
+	cert: fs.readFileSync(`${__dirname}/certs/dev.crt`),
 	requestCert: false,
 	rejectUnauthorized: false
 };

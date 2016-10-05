@@ -3,8 +3,8 @@ var express = require('express');
 var fs = require('fs');
 var https = require('https');
 var options = {
-    key: fs.readFileSync(__dirname + "/dev.key"),
-    cert: fs.readFileSync(__dirname + "/dev.crt"),
+    key: fs.readFileSync(__dirname + "/certs/dev.key"),
+    cert: fs.readFileSync(__dirname + "/certs/dev.crt"),
     requestCert: false,
     rejectUnauthorized: false
 };
