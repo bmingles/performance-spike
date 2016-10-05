@@ -1,5 +1,13 @@
 "use strict";
 var express = require('express');
+var fs = require('fs');
+var https = require('https');
+var options = {
+    key: fs.readFileSync(__dirname + "/dev.key"),
+    cert: fs.readFileSync(__dirname + "/dev.crt"),
+    requestCert: false,
+    rejectUnauthorized: false
+};
 var app = express();
 app.set('view engine', 'pug');
 app.get('/favicon.ico', function (req, res) {
@@ -38,6 +46,6 @@ for (var _d = 0, _e = 'abcdefghijklmnopqrstuvwxyz'; _d < _e.length; _d++) {
         }, 3000);
     });
 }
-app.listen(3000, function () {
+https.createServer(options, app).listen(3000, function () {
     console.log('Listening on 3000.');
 });

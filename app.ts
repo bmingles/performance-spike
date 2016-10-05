@@ -1,4 +1,13 @@
 import * as express from 'express';
+import * as fs from 'fs';
+import * as https from 'https';
+
+let options = {
+	key: fs.readFileSync(`${__dirname}/dev.key`),
+	cert: fs.readFileSync(`${__dirname}/dev.crt`),
+	requestCert: false,
+	rejectUnauthorized: false
+};
 
 let app = express();
 
@@ -29,14 +38,13 @@ for (let char of 'abcdefghijklmnopqrstuvwxyz') {
 }
 
 for (let char of 'abcdefghijklmnopqrstuvwxyz') {
-app.get('/data2_' + char, function (req, res) {
-	setTimeout(() => {
-		res.send('Data!');
-	}, 3000);
-});
+	app.get('/data2_' + char, function (req, res) {
+		setTimeout(() => {
+			res.send('Data!');
+		}, 3000);
+	});
 }
 
-
-app.listen(3000, () => {
+https.createServer(options, app).listen(3000, () => {
 	console.log('Listening on 3000.');
 });
