@@ -4,6 +4,10 @@ let app = express();
 
 app.set('view engine', 'pug');
 
+app.get('/favicon.ico', (req, res) => {
+	res.send(200);
+});
+
 app.get('/', function (req, res) {
 	res.render('index', { title: 'Home', message: 'Hello!' });
 });
