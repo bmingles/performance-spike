@@ -1,0 +1,23 @@
+html
+	head
+		title= title
+		script.
+			for(var i = 0; i < 18; ++i) {
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.open('GET', '/data2_' + 'abcdefghijklmnopqrstuvwxyz'[i], true);
+				httpRequest.send(null);
+			}
+			var keys = ['name', 'startTime', 'redirectStart', 'redirectEnd', 'fetchStart', 'domainLookupStart', 'domainLookupEnd', 'connectStart', 'connectEnd', 'requestStart', 'responseStart', 'responseEnd'];
+			console.log(keys);
+
+			var logTimings = function() {
+				var timings = window.performance.getEntriesByType('resource');
+				for(var i = 0; i < timings.length; ++i) {
+					console.log('-------------------------------------------------------');
+					keys.forEach(function(key) {
+						console.log((key + '          ').substring(0, 17), timings[i][key]);
+					});
+				}
+			};
+	body
+		h1= message
